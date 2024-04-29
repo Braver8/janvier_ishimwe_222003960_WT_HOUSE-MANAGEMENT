@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>House Buying System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: skyblue;
+        }
+
+        header {
+            background-color: blue;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+
+        .main-section {
+            background-color: #f1f1f1;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .featured-listings {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+
+        .listing {
+            width: 30%;
+            background-color: lightcoral;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .listing img {
+            width: 100%;
+            border-radius: 5px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #f1f1f1;
+        }
+    </style>
+</head>
+<form action="propertyview.php" class=form method="POST">
+<body>
+    <header>
+        <h1>Welcome to House Buying System</h1>
+        <button><a href="./login.html" style="color: white; text-decoration: none;">Logout</a></button>
+    </header>
+
+    <nav>
+        <div style="display: flex; justify-content: space-between; padding: 10px 20px;">
+            <div>
+                <button><a href="./home.html">Home</a></button>
+                <button><a href="#">Buy Houses</a></button>
+                <button><a href="./rent.html">Rent Houses</a></button>
+                <button><a href="./sell.html">Sell Houses</a></button>
+            </div>
+            <div>
+                <button><a href="./about.html">About Us</a></button>
+                <button><a href="./contact.html">Contact</a></button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Assume this is your modified HTML file (home.html) -->
+
+<!-- Header and navigation (unchanged) -->
+
+<div class="container">
+    <div class="main-section">
+        <h2>Featured Properties for Sale</h2>
+        <div class="featured-listings">
+            <!-- Each listing with a "View Details" button -->
+            <div class="listing">
+                <img src="house7.jpg" alt="House 7">
+                <h3>Luxurious Mansion</h3>
+                <p>6 bedrooms | 5 bathrooms | $1,500,000</p>
+                <button onclick="getPropertyDetails(7)">View Details</button>
+            </div>
+            <div class="listing">
+                <img src="house8.jpg" alt="House 8">
+                <h3>Modern City Apartment</h3>
+                <p>3 bedrooms | 2 bathrooms | $700,000</p>
+                <button onclick="getPropertyDetails(8)">View Details</button>
+            </div>
+            <div class="listing">
+                <img src="house9.jpg" alt="House 9">
+                <h3>Coastal Villa</h3>
+                <p>4 bedrooms | 3 bathrooms | $900,000</p>
+                <button onclick="getPropertyDetails(9)">View Details</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Footer (unchanged) -->
+
+
+
+    <footer>
+        <p>&copy; 2024 UR CBE BIT Year 2 @two group</p>
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Property Form</title>
+    <style>
+        /* Basic styling for form layout */
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        form {
+            width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        h2 {
+            text-align: center;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+        input[type="text"],
+        input[type="number"],
+        textarea {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        textarea {
+            height: 80px;
+            resize: vertical;
+        }
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <button onclick="myfunction();"><a href="./home.html">Home</a></button>
+    <h2>Add New Property</h2>
+    <form action="property.php" method="POST">
+        <label for="address">Address:</label>
+        <input type="text" id="address" name="address" required placeholder="Enter property address">
+
+        <label for="rent">Monthly Rent (USD):</label>
+        <input type="text" id="rent" name="rent" required placeholder="Enter monthly rent">
+
+        <label for="bedrooms">Number of Bedrooms:</label>
+        <input type="text" id="bedrooms" name="bedrooms" required placeholder="Enter number of bedrooms">
+
+        <label for="bathrooms">Number of Bathrooms:</label>
+        <input type="text" id="bathrooms" name="bathrooms" required placeholder="Enter number of bathrooms">
+
+        <label for="description">Description:</label>
+        <textarea type="text" name="description" required placeholder="Enter property description"></textarea>
+
+        <input type="submit" value="Add Property">
+    </form>
+</body>
+</html>

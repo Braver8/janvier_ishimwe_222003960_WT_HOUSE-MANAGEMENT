@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Properties Table</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f1f1f1;
+            padding: 20px;
+        }
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #007bff;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+        <script>
+        const express = require('express');
+const mysql = require('mysql');
+
+const app = express();
+const PORT = 3000;
+
+// MySQL connection pool
+const pool = mysql.createPool({
+    host: 'localhost',
+    user: 'your_username',
+    password: 'your_password',
+    database: 'your_database_name'
+});
+
+// API endpoint to fetch all properties
+app.get('/api/properties', (req, res) => {
+    pool.query('SELECT * FROM properties', (error, results) => {
+        if (error) {
+            console.error('Error fetching properties:', error);
+            res.status(500).json({ error: 'Internal server error' });
+        } else {
+            res.json(results);
+        }
+    });
+});
+
+// Start the server
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
+});
+</script>
+    <h1>Properties Table</h1>
+    <table id="propertiesTable">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Address</th>
+                <th>Rent</th>
+                <th>Bedrooms</th>
+                <th>Bathrooms</th>
+                <th>Description</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody id="tableBody">
+            <!-- Table rows will be populated dynamically -->
+        </tbody>
+    </table>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            fetchPropertiesData();
+        });
+
+        async function fetchPropertiesData() {
+            try {
+                const response = await fetch('/api/properties');
+                const properties = await response.json();
+
+                const tableBody = document.getElementById('tableBody');
+                tableBody.innerHTML = ''; // Clear existing rows
+
+                properties.forEach(property => {
+                    const row = `
+                        <tr>
+                            <td>${property.id}</td>
+                            <td>${property.address}</td>
+                            <td>${property.rent}</td>
+                            <td>${property.bedrooms}</td>
+                            <td>${property.bathrooms}</td>
+                            <td>${property.description}</td>
+                            <td>
+                                <button onclick="editProperty(${property.id})">Edit</button>
+                                <button onclick="deleteProperty(${property.id})">Delete</button>
+                            </td>
+                        </tr>
+                    `;
+                    tableBody.innerHTML += row;
+                });
+            } catch (error) {
+                console.error('Error fetching properties:', error);
+            }
+        }
+
+        function editProperty(id) {
+            // Implement edit logic (e.g., open edit form)
+            console.log(`Editing property with ID ${id}`);
+        }
+
+        function deleteProperty(id) {
+            const confirmation = confirm(`Are you sure you want to delete property with ID ${id}?`);
+            if (confirmation) {
+                // Perform delete operation (e.g., make API request to delete property)
+                console.log(`Deleting property with ID ${id}`);
+                // After successful deletion, fetch and update the properties table
+                fetchPropertiesData();
+            }
+        }
+    </script>
+</body>
+</html>
